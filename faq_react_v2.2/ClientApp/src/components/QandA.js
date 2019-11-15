@@ -2,6 +2,7 @@ import React from "react";
 import {Card, CardBody, CardText, CardTitle} from "reactstrap";
 
 
+
 class QandA extends React.Component {
 
     constructor(props) {
@@ -9,16 +10,15 @@ class QandA extends React.Component {
         this.incrementCounter = this.incrementCounter.bind(this);
         this.decrementCounter = this.decrementCounter.bind(this);
 
-        this.state = { 
+        this.state = ({ 
             qId : this.props.qId,
             upId : "up"+this.props.qId,
             downId : "down"+this.props.qId,
             qRated: this.props.qRated,
             clicked: false
-        };
-        
-
+        });
     }
+    
 
     incrementCounter () {
         if (this.state.disabled) {
@@ -35,7 +35,6 @@ class QandA extends React.Component {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data.toString());
                 document.getElementById(this.state.upId).classList.add('disabled');
                 document.getElementById(this.state.downId).classList.add('disabled');
 
@@ -57,7 +56,6 @@ class QandA extends React.Component {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data.toString());
                 document.getElementById(this.state.upId).classList.add('disabled');
                 document.getElementById(this.state.downId).classList.add('disabled');
 
@@ -65,6 +63,9 @@ class QandA extends React.Component {
     }
     
     render () {
+
+        
+        
         return (
         <Card className="my-3">
             <CardBody>

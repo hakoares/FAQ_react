@@ -13,14 +13,14 @@ export class Home extends Component {
         this.handler = this.handler.bind(this)
         this.renderAllQuestion = this.renderAllQuestions.bind(this);
         Home.renderAllCategories = Home.renderAllCategories.bind(this);
-        
-        this.state = { 
-            allQuestions: [],
-            allCategories: [],
-            loadingQ: true,
-            loadingC: true,
-            questionsToLoad: 0
-        };
+
+            this.state = {
+                allQuestions: [],
+                allCategories: [],
+                loadingQ: true,
+                loadingC: true,
+                questionsToLoad: 0
+            };
         
         this.fetchCategories();
         this.fetchQuestions();
@@ -28,6 +28,10 @@ export class Home extends Component {
         
     }
     
+    componentDidMount() {
+
+    }
+
     handler() {
         
         this.loadQuestionsByCat(this.state.questionsToLoad)
@@ -53,7 +57,7 @@ export class Home extends Component {
     }
 
     loadQuestionsByCat (id) {
-        this.setState({questionsToLoad: id}, function () {
+        this.setState({questionsToLoad: id, allQuestions: []}, function () {
             
             var url = "";
             if(id === 0) {
@@ -80,7 +84,10 @@ export class Home extends Component {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({ allQuestions: data, loadingQ: false });
+                    this.setState({ allQuestions: data, loadingQ: false }, function () {
+                        
+                    });
+                    
                 });
         });
         
@@ -141,26 +148,25 @@ export class Home extends Component {
                </div>
         )
     }
-
-  
+    
     
     render () {
-        let contents = this.state.loadingQ
-            ? <p><em>Laster...</em></p>
-            : this.renderAllQuestions(this.state.allQuestions);
-        
-        let category = this.state.loadingC 
-            ? <p><em>Laster...</em></p> 
-            : Home.renderAllCategories(this.state.allCategories);
-            
-            
+
+            let contents = this.state.loadingQ
+                ? <p><em>Laster...</em></p>
+                : this.renderAllQuestions(this.state.allQuestions);
+
+            let category = this.state.loadingC
+                ? <p><em>Laster...</em></p>
+                : Home.renderAllCategories(this.state.allCategories);
+
         
         return (
             <div className="mb-5">
                 <h1 className="text-center display-1 mt-5">FAQ</h1>
+                <PostQuestion handler={this.handler} />
                 {category}
                 {contents}
-                <PostQuestion handler={this.handler} />
             </div>
         );
     }
