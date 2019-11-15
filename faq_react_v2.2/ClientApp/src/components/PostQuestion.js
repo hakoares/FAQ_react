@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Modal } from 'react-bootstrap';
 
 class PostQuestion extends React.Component {
 
@@ -108,20 +107,20 @@ class PostQuestion extends React.Component {
         return (
          <div>
 
-             <Modal show={this.state.show} onHide={this.modalHide}>
-                 <Modal.Header closeButton>
-                     <Modal.Title>Modal heading</Modal.Title>
-                 </Modal.Header>
-                 <Modal.Body>
-                     <h4>Text in a modal</h4>
-                     <p>
-                         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                     </p>
-                 </Modal.Body>
-                 <Modal.Footer>
-                     <Button onClick={this.modalHide}>Close</Button>
-                 </Modal.Footer>
-             </Modal>
+             {/*<Modal show={this.state.show} onHide={this.modalHide}>*/}
+             {/*    <Modal.Header closeButton>*/}
+             {/*        <Modal.Title>Modal heading</Modal.Title>*/}
+             {/*    </Modal.Header>*/}
+             {/*    <Modal.Body>*/}
+             {/*        <h4>Text in a modal</h4>*/}
+             {/*        <p>*/}
+             {/*            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.*/}
+             {/*        </p>*/}
+             {/*    </Modal.Body>*/}
+             {/*    <Modal.Footer>*/}
+             {/*        <Button onClick={this.modalHide}>Close</Button>*/}
+             {/*    </Modal.Footer>*/}
+             {/*</Modal>*/}
 
              <Button a variant="primary" onClick={this.modalToggle}>Legg til</Button>
              
