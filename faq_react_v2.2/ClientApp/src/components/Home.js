@@ -55,7 +55,7 @@ export class Home extends Component {
                 this.setState({ allQuestions: data, loadingQ: false });
             });
     }
-
+    
     loadQuestionsByCat (id) {
         this.setState({questionsToLoad: id, allQuestions: []}, function () {
             
@@ -106,8 +106,11 @@ export class Home extends Component {
             return allQuestions.map(cat =>
                 <div className="mb-5">
                     <h3>{cat.catName}</h3>
-                    {cat.questions.map(q => {
+                    {cat.questions
+                        .sort((a, b) => a.votes < b.votes)
+                        .map(q => {
                         if (q.answer === null) {
+                            
                             return(
                             <QandA
                                 qId={q.id}
