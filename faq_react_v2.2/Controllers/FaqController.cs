@@ -63,9 +63,6 @@ namespace faq_react_v2._2.Controllers
         [HttpPost("q/post")]
         public JsonResult PostQuestion([FromBody] Question question)
         {
-            
-            
-            
             if (ModelState.IsValid)
             {
                 question.Category = _repository.GetCategoryById(question.Category.Id);
