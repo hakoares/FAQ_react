@@ -113,7 +113,7 @@ export class Home extends Component {
                                 qId={q.id}
                                 question={q.text}
                                 qRated={q.votes}
-                                answer={<i>Mangler svar</i>}
+                                answer={<i>En av våre medarbeidere vil svare så raskt de har tid!</i>}
                             />
                             )
                         } else {
@@ -138,12 +138,14 @@ export class Home extends Component {
                <div>
                    <div className="card-body text-center">
                        <h5 className="card-title">Velg kategori</h5>
-                       <button id="0" className="btn text-muted" onClick={() => this.loadQuestionsByCat(0)} >Alle</button>
+                       <a id="0" href="#" className="text-dark mx-2" onClick={() => this.loadQuestionsByCat(0)} >Alle</a>
 
                        {allCat.map( cat =>
-                           <button key={cat.id} id={cat.id} className="btn" onClick={() => this.loadQuestionsByCat(cat.id)} >{cat.name}</button>
+                           <a key={cat.id} id={cat.id} href="#" className="text-dark mx-2" onClick={() => this.loadQuestionsByCat(cat.id)} >{cat.name}</a>
                        )}
-           
+                       <div className="ml-3 d-inline">
+                       <PostQuestion handler={this.handler} />
+                       </div>
                    </div>
                </div>
         )
@@ -164,7 +166,6 @@ export class Home extends Component {
         return (
             <div className="mb-5">
                 <h1 className="text-center display-1 mt-5">FAQ</h1>
-                <PostQuestion handler={this.handler} />
                 {category}
                 {contents}
             </div>

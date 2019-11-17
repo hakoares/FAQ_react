@@ -62,7 +62,6 @@
         </e>
         <e p="Controllers" t="Include">
           <e p="FaqController.cs" t="Include" />
-          <e p="SampleDataController.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
           <e p="AppContext.cs" t="Include" />
